@@ -28,7 +28,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
         ViewGroup layout = (ViewGroup) findViewById(R.id.activity_display_message);
         layout.addView(textView);
 
-        new URLCaller().execute();
+
 
 
 

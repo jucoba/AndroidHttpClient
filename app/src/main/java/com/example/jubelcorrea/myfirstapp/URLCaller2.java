@@ -2,12 +2,11 @@ package com.example.jubelcorrea.myfirstapp;
 
 
 import android.os.AsyncTask;
+import android.widget.EditText;
 
-import org.json.JSONObject;
+
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -16,17 +15,18 @@ import java.net.URL;
 /**
  * Created by JubelCorrea on 24/09/16.
  */
-public class URLCaller extends AsyncTask {
+public class URLCaller2  {
 
 
 
 
-    @Override
-    protected Object doInBackground(Object[] params) {
-        String url_string = "https://heyiamhere.herokuapp.com/messages";
+
+    public String postURL(String url_string) {
+
         BufferedReader reader = null;
 
         String nodo = new JSON_Creator().getNode();
+        String resutl_messaga = "not executed";
 
         try {
 
@@ -43,6 +43,7 @@ public class URLCaller extends AsyncTask {
             int respCode = conn.getResponseCode();
             reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             reader.close();
+            resutl_messaga = String.valueOf(respCode);
 
 
 
@@ -53,6 +54,7 @@ public class URLCaller extends AsyncTask {
         }catch (Exception e)
         {
             e.printStackTrace();
+            resutl_messaga = e.toString();
 
 
         }finally {
@@ -60,7 +62,8 @@ public class URLCaller extends AsyncTask {
 
 
         }
-        return null;
+        return resutl_messaga;
 
     }
+
 }
